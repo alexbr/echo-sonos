@@ -1,29 +1,29 @@
 'use strict';
 
-var http = require('http');
-var https = require('https');
-var AWS = require('aws-sdk');
-var dynamodb = null;
+const http = require('http');
+const https = require('https');
+const AWS = require('aws-sdk');
 
-var options = require('./options');
-var defaultMusicService = ((options.defaultMusicService !== undefined) && (options.defaultMusicService > '')) ? options.defaultMusicService : 'presets';
-var defaultRoom = (options.defaultRoom !== undefined) ? options.defaultRoom:'';
+const options = require('./options');
+const defaultMusicService = ((options.defaultMusicService !== undefined) && (options.defaultMusicService > '')) ? options.defaultMusicService : 'presets';
+const defaultRoom = (options.defaultRoom !== undefined) ? options.defaultRoom:'';
 
-var serverUrl = '';
-var clientUrl = '';
-var sqsServer = null;
-var sqsClient = null;
-
-var AlexaSkill = require('./AlexaSkill');
-var EchoSonos = function() {
+const AlexaSkill = require('./AlexaSkill');
+const EchoSonos = function() {
    AlexaSkill.call(this, options.appid);
 };
 
-var STATE_RESPONSES = [
+const STATE_RESPONSES = [
    "This is $currentTitle by $currentArtist",
    "We're listening to $currentTitle by $currentArtist",
    "$currentTitle by $currentArtist"
 ];
+
+const basePath = options.basePath ? ('/' + options.basePath) : '';
+var serverUrl = '';
+var clientUrl = '';
+var sqsServer = null;
+var sqsClient = null;
 
 EchoSonos.prototype = Object.create(AlexaSkill.prototype);
 EchoSonos.prototype.constructor = EchoSonos;
@@ -385,7 +385,7 @@ function moreMusicHandler(roomValue, service, cmdpath, response) {
 }
 
 /**
- * Handles SiriusXM Radio 
+ * Handles SiriusXM Radio
  */
 function siriusXMHandler(roomValue, name, type, response) {
    var skillPath = '/siriusxm/' + encodeURIComponent(name.replace(' ', '+'));
@@ -400,7 +400,7 @@ function siriusXMHandler(roomValue, name, type, response) {
 }
 
 /**
- * Handles SiriusXM Radio 
+ * Handles SiriusXM Radio
  */
 function pandoraHandler(roomValue, cmdpath, name, response) {
    var skillPath = '/pandora' + cmdpath + (cmdpath === '/play/' ? encodeURIComponent(name) : '');
@@ -464,7 +464,7 @@ function playlistHandler(roomValue, presetValue, skillName, response) {
 }
 
 /**
- * Handles all skills of the form /roomname/toggle/[on,off] 
+ * Handles all skills of the form /roomname/toggle/[on,off]
  */
 function toggleHandler(roomValue, toggleValue, skillName, response) {
    if (!toggleValue || (toggleValue !== 'on' && toggleValue !== 'off')) {
@@ -486,7 +486,7 @@ function toggleHandler(roomValue, toggleValue, skillName, response) {
 
 /**
  * Handles up, down, & absolute volume for either an individual room or an
- * entire group 
+ * entire group
  */
 function volumeHandler(roomValue, response, volume) {
    var roomAndGroup = parseRoomAndGroup(roomValue);
@@ -503,13 +503,13 @@ function volumeHandler(roomValue, response, volume) {
          genericResponse(error, response);
       });
    } else {
-      actOnCoordinator(options, '/groupVolume/' + volume, roomAndGroup.room,  function (error, responseBodyJson) {
+      actOnCoordinator(options, '/groupVolume/' + volume, roomAndGroup.room,  function (error) {
          genericResponse(error, response);
       });
    }
 }
 
-/** 
+/**
  * Given a string roomArgument that either looks like "my room" or "my room
  * group", returns an object with two members:
  *   obj.group: true if roomArgument ends with "group", false otherwise.
@@ -691,7 +691,7 @@ function loadCurrentRoomAndService(echoId, room, onCompleteFun) {
                };
 
                console.log("Create echo-sonos table");
-               dynamodb.createTable(params, function(err, data) {
+               dynamodb.createTable(params, function(err) {
                   if (err) {
                      console.error("Unable to create table. Error JSON:", JSON.stringify(err, null, 2));
                   } else {
@@ -699,7 +699,7 @@ function loadCurrentRoomAndService(echoId, room, onCompleteFun) {
                         TableName : "echo-sonos"
                      };
 
-                     dynamodb.waitFor('tableExists', params, function(err, data) {
+                     dynamodb.waitFor('tableExists', params, function(err) {
                         if (err) {
                            console.error("Unable to wait for table table. Error JSON:", JSON.stringify(err, null, 2));
                         } else {
@@ -720,8 +720,10 @@ function loadCurrentRoomAndService(echoId, room, onCompleteFun) {
 }
 
 function httpreq(options, responseCallback) {
+   options.path = basePath + options.path;
+
    if (options.useSQS) {
-      sqsServer.purgeQueue({QueueUrl:serverUrl}, function(err, data) {
+      sqsServer.purgeQueue({QueueUrl:serverUrl}, () => {
          console.log("sending SQS " + options.path);
          sqsClient.sendMessage({
             MessageBody: options.path,
@@ -743,7 +745,7 @@ function httpreq(options, responseCallback) {
                      sqsServer.deleteMessage({
                         QueueUrl: serverUrl,
                         ReceiptHandle: message.ReceiptHandle
-                     }, function(err, data) {
+                     }, function(err) {
                         responseCallback(undefined, response);
                         if (err) {
                            console.log(err);
@@ -794,7 +796,7 @@ function actOnCoordinator(options, actionPath, room, onCompleteFun) {
       options.path = '/' + encodeURIComponent(coordinatorRoomName) + actionPath;
       console.log(options.path);
       httpreq(options, onCompleteFun);
-   }
+   };
 
    var handleZonesResponse = function(error, responseJson) {
       if (!error) {
@@ -806,7 +808,7 @@ function actOnCoordinator(options, actionPath, room, onCompleteFun) {
       else {
          onCompleteFun(error);
       }
-   }
+   };
 
    if (roomCoordinators[room]) {
       var coordinatorRoomName = roomCoordinators[room];
@@ -823,7 +825,7 @@ function genericResponse(error, response, success) {
    var msg;
 
    if (error) {
-      msg = 'Oh <phoneme alphabet="ipa" ph="ˈfʌk">fork</phoneme>, looks like an error occurred. ' + error.message;
+      msg = 'Aw <phoneme alphabet="ipa" ph="ˈfʌk">fork</phoneme>, looks like an error occurred. ' + error.message;
    } else if (success) {
       msg = success;
    } else {
@@ -856,13 +858,13 @@ function findCoordinatorForRoom(responseJson, room) {
 // Create the handler that responds to the Alexa Request.
 exports.handler = function (event, context) {
    // Create an instance of the EchoSonos skill.
-   var echoSonos = new EchoSonos();
+   const echoSonos = new EchoSonos();
    if (options.useSQS) {
-      var region = process.env.AWS_REGION;
-      var arn = context.invokedFunctionArn;
-      var actLoc = arn.indexOf(region) + region.length + 1;
-      var accountId = arn.substring(actLoc,arn.indexOf(':',actLoc));
-      var baseSqsUrl = "https://sqs." + region + ".amazonaws.com/" + accountId;
+      const region = process.env.AWS_REGION;
+      const arn = context.invokedFunctionArn;
+      const actLoc = arn.indexOf(region) + region.length + 1;
+      const accountId = arn.substring(actLoc,arn.indexOf(':',actLoc));
+      const baseSqsUrl = "https://sqs." + region + ".amazonaws.com/" + accountId;
       serverUrl = baseSqsUrl + "/SQS-Proxy-Server";
       clientUrl = baseSqsUrl + "/SQS-Proxy-Client";
       sqsServer = new AWS.SQS({region : region});
