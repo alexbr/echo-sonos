@@ -1,401 +1,367 @@
 {
-    "intents": [
-    
+  "intents": [
     {
-      "intent": "MusicIntent",
+      "intent": "AmplifierIntent"
+    },
+    {
       "slots": [
         {
-            "name": "Name",
-            "type": "NAMES"
+          "name": "Name",
+          "type": "NAMES"
         },
         {
-            "name": "Room",
-            "type": "ROOMS"
-        }   
-      ]
+          "name": "Room",
+          "type": "ROOMS"
+        }
+      ],
+      "intent": "MusicIntent"
     },
-    
     {
-      "intent": "AlbumIntent",
       "slots": [
         {
-            "name": "Name",
-            "type": "NAMES"
+          "name": "Name",
+          "type": "NAMES"
         },
         {
-            "name": "Room",
-            "type": "ROOMS"
-        }   
-      ]
+          "name": "Room",
+          "type": "ROOMS"
+        }
+      ],
+      "intent": "AlbumIntent"
     },
-      
     {
-      "intent": "ArtistIntent",
       "slots": [
         {
-            "name": "Name",
-            "type": "NAMES"
+          "name": "Name",
+          "type": "NAMES"
         },
         {
-            "name": "Room",
-            "type": "ROOMS"
-        }   
-      ]
+          "name": "Room",
+          "type": "ROOMS"
+        }
+      ],
+      "intent": "ArtistIntent"
     },
-      
     {
-      "intent": "TrackIntent",
       "slots": [
         {
-            "name": "Name",
-            "type": "NAMES"
+          "name": "Name",
+          "type": "NAMES"
         },
         {
-            "name": "Room",
-            "type": "ROOMS"
-        }   
-      ]
+          "name": "Room",
+          "type": "ROOMS"
+        }
+      ],
+      "intent": "TrackIntent"
     },
-      
     {
-      "intent": "MusicRadioIntent",
       "slots": [
         {
-            "name": "Name",
-            "type": "NAMES"
+          "name": "Name",
+          "type": "NAMES"
         },
         {
-            "name": "Room",
-            "type": "ROOMS"
-        }   
-      ]
+          "name": "Room",
+          "type": "ROOMS"
+        }
+      ],
+      "intent": "MusicRadioIntent"
     },
-
     {
-      "intent": "PlayMoreByArtistIntent",
       "slots": [
         {
-            "name": "Room",
-            "type": "ROOMS"
-        }   
-      ]
+          "name": "Room",
+          "type": "ROOMS"
+        }
+      ],
+      "intent": "PlayMoreByArtistIntent"
     },
-  
     {
-      "intent": "PlayMoreLikeTrackIntent",
       "slots": [
         {
-            "name": "Room",
-            "type": "ROOMS"
-        }   
-      ]
+          "name": "Room",
+          "type": "ROOMS"
+        }
+      ],
+      "intent": "PlayMoreLikeTrackIntent"
     },
-      
-    {  
-      "intent": "SiriusXMStationIntent",
+    {
       "slots": [
         {
-            "name": "Station",
-            "type": "SXMSTATIONS"
+          "name": "Station",
+          "type": "SXMSTATIONS"
         },
         {
-            "name": "Room",
-            "type": "ROOMS"
-        }   
-      ]
+          "name": "Room",
+          "type": "ROOMS"
+        }
+      ],
+      "intent": "SiriusXMStationIntent"
     },
-      
-    {  
-      "intent": "SiriusXMChannelIntent",
+    {
       "slots": [
         {
-            "name": "Channel",
-            "type": "SXMCHANNELS"
+          "name": "Channel",
+          "type": "SXMCHANNELS"
         },
         {
-            "name": "Room",
-            "type": "ROOMS"
-        }   
-      ]
+          "name": "Room",
+          "type": "ROOMS"
+        }
+      ],
+      "intent": "SiriusXMChannelIntent"
     },
-      
     {
-      "intent": "PandoraMusicIntent",
       "slots": [
         {
-            "name": "Name",
-            "type": "NAMES"
+          "name": "Name",
+          "type": "NAMES"
         },
         {
-            "name": "Room",
-            "type": "ROOMS"
-        }   
-      ]
+          "name": "Room",
+          "type": "ROOMS"
+        }
+      ],
+      "intent": "PandoraMusicIntent"
     },
-   
     {
-      "intent": "PandoraThumbsUpIntent",
       "slots": [
         {
-            "name": "Room",
-            "type": "ROOMS"
-        }   
-      ]
+          "name": "Room",
+          "type": "ROOMS"
+        }
+      ],
+      "intent": "PandoraThumbsUpIntent"
     },
-    
     {
-      "intent": "PandoraThumbsDownIntent",
       "slots": [
         {
-            "name": "Room",
-            "type": "ROOMS"
-        }   
-      ]
+          "name": "Room",
+          "type": "ROOMS"
+        }
+      ],
+      "intent": "PandoraThumbsDownIntent"
     },
-      
     {
-      "intent": "PlayPresetIntent",
       "slots": [
         {
-            "name": "Preset",
-            "type": "PRESETS"
+          "name": "Preset",
+          "type": "PRESETS"
         },
         {
-            "name": "Room",
-            "type": "ROOMS"
-        }   
-      ]
+          "name": "Room",
+          "type": "ROOMS"
+        }
+      ],
+      "intent": "PlayPresetIntent"
     },
-  
     {
-      "intent": "PlaylistIntent",
       "slots": [
         {
-            "name": "Preset",
-            "type": "PRESETS"
+          "name": "Preset",
+          "type": "PRESETS"
         },
         {
-            "name": "Room",
-            "type": "ROOMS"
-        }   
-      ]
+          "name": "Room",
+          "type": "ROOMS"
+        }
+      ],
+      "intent": "PlaylistIntent"
     },
-  
     {
-      "intent": "FavoriteIntent",
       "slots": [
         {
-            "name": "Preset",
-            "type": "PRESETS"
+          "name": "Preset",
+          "type": "PRESETS"
         },
         {
-            "name": "Room",
-            "type": "ROOMS"
-        }   
-      ]
+          "name": "Room",
+          "type": "ROOMS"
+        }
+      ],
+      "intent": "FavoriteIntent"
     },
-
     {
-      "intent": "ChangeRoomIntent",
       "slots": [
         {
-            "name": "Room",
-            "type": "ROOMS"
-        }   
-      ]
+          "name": "Room",
+          "type": "ROOMS"
+        }
+      ],
+      "intent": "ChangeRoomIntent"
     },
-    
     {
-      "intent": "ChangeServiceIntent",
       "slots": [
         {
-            "name": "Service",
-            "type": "SERVICES"
-        }   
-      ]
+          "name": "Service",
+          "type": "SERVICES"
+        }
+      ],
+      "intent": "ChangeServiceIntent"
     },
-    
     {
-      "intent": "ChangeRoomAndServiceIntent",
       "slots": [
         {
-            "name": "Room",
-            "type": "ROOMS"
-        },   
+          "name": "Room",
+          "type": "ROOMS"
+        },
         {
-            "name": "Service",
-            "type": "SERVICES"
-        }   
-      ]
+          "name": "Service",
+          "type": "SERVICES"
+        }
+      ],
+      "intent": "ChangeRoomAndServiceIntent"
     },
-    
     {
-      "intent": "PauseIntent",
       "slots": [
         {
-            "name": "Room",
-            "type": "ROOMS"
-        }   
-      ]
+          "name": "Room",
+          "type": "ROOMS"
+        }
+      ],
+      "intent": "PauseIntent"
     },
-    
     {
       "intent": "PauseAllIntent"
     },
-   
     {
-      "intent": "ResumeIntent",
       "slots": [
-         {
-            "name": "Room",
-            "type": "ROOMS"
-         }   
-       ] 
+        {
+          "name": "Room",
+          "type": "ROOMS"
+        }
+      ],
+      "intent": "ResumeIntent"
     },
-    
     {
       "intent": "ResumeAllIntent"
     },
-
     {
-      "intent": "VolumeDownIntent",
       "slots": [
         {
-            "name": "Room",
-            "type": "ROOMS"
-        }   
-      ]
+          "name": "Room",
+          "type": "ROOMS"
+        }
+      ],
+      "intent": "VolumeDownIntent"
     },
-    
     {
-      "intent": "VolumeUpIntent",
       "slots": [
         {
-            "name": "Room",
-            "type": "ROOMS"
-        }   
-      ]
+          "name": "Room",
+          "type": "ROOMS"
+        }
+      ],
+      "intent": "VolumeUpIntent"
     },
-
     {
-      "intent": "SetVolumeIntent",
       "slots": [
         {
-            "name": "Percent",
-            "type": "AMAZON.NUMBER"
+          "name": "Percent",
+          "type": "AMAZON.NUMBER"
         },
         {
-            "name": "Room",
-            "type": "ROOMS"
+          "name": "Room",
+          "type": "ROOMS"
         }
-      ]
+      ],
+      "intent": "SetVolumeIntent"
     },
-  
     {
-      "intent": "NextTrackIntent",
       "slots": [
         {
-            "name": "Room",
-            "type": "ROOMS"
-        }   
-      ]
+          "name": "Room",
+          "type": "ROOMS"
+        }
+      ],
+      "intent": "NextTrackIntent"
     },
-  
     {
-      "intent": "PreviousTrackIntent",
       "slots": [
         {
-            "name": "Room",
-            "type": "ROOMS"
-        }   
-      ]
+          "name": "Room",
+          "type": "ROOMS"
+        }
+      ],
+      "intent": "PreviousTrackIntent"
     },
-
     {
-      "intent": "ClearQueueIntent",
       "slots": [
         {
-            "name": "Room",
-            "type": "ROOMS"
-        }   
-      ]
+          "name": "Room",
+          "type": "ROOMS"
+        }
+      ],
+      "intent": "ClearQueueIntent"
     },
-
-   
     {
-      "intent": "WhatsPlayingIntent",
       "slots": [
         {
-            "name": "Room",
-            "type": "ROOMS"
-        }   
-      ]
+          "name": "Room",
+          "type": "ROOMS"
+        }
+      ],
+      "intent": "WhatsPlayingIntent"
     },
-
     {
-      "intent": "MuteIntent",
       "slots": [
         {
-            "name": "Room",
-            "type": "ROOMS"
-        }   
-      ]
+          "name": "Room",
+          "type": "ROOMS"
+        }
+      ],
+      "intent": "MuteIntent"
     },
-
     {
-      "intent": "UnmuteIntent",
       "slots": [
         {
-            "name": "Room",
-            "type": "ROOMS"
-        }   
-      ]
+          "name": "Room",
+          "type": "ROOMS"
+        }
+      ],
+      "intent": "UnmuteIntent"
     },
-
     {
-      "intent":  "RepeatIntent",
       "slots": [
         {
-            "name": "Toggle",
-            "type": "TOGGLES"
+          "name": "Toggle",
+          "type": "TOGGLES"
         },
         {
-            "name": "Room",
-            "type": "ROOMS"
+          "name": "Room",
+          "type": "ROOMS"
         }
-      ]
+      ],
+      "intent": "RepeatIntent"
     },
-
     {
-      "intent":  "ShuffleIntent",
       "slots": [
         {
-            "name": "Toggle",
-            "type": "TOGGLES"
+          "name": "Toggle",
+          "type": "TOGGLES"
         },
         {
-            "name": "Room",
-            "type": "ROOMS"
+          "name": "Room",
+          "type": "ROOMS"
         }
-      ]
+      ],
+      "intent": "ShuffleIntent"
     },
-
     {
-      "intent":  "CrossfadeIntent",
       "slots": [
         {
-            "name": "Toggle",
-            "type": "TOGGLES"
+          "name": "Toggle",
+          "type": "TOGGLES"
         },
         {
-            "name": "Room",
-            "type": "ROOMS"
+          "name": "Room",
+          "type": "ROOMS"
         }
-      ]
+      ],
+      "intent": "CrossfadeIntent"
     },
-    
     {
-      "intent": "JoinGroupIntent",
       "slots": [
         {
           "name": "JoiningRoom",
@@ -405,41 +371,17 @@
           "name": "PlayingRoom",
           "type": "ROOMS"
         }
-      ]
+      ],
+      "intent": "JoinGroupIntent"
     },
-    
     {
-      "intent" : "UngroupIntent",
-      "slots" : [
-        {
-          "name" : "Room",
-          "type" : "ROOMS"
-        }
-      ]
-    },
-    
-    {
-      "intent" : "PlayInRoomIntent",
-      "slots" : [
-        {
-          "name" : "Room",
-          "type" : "ROOMS"
-        }
-      ]
-    },
-
-    {
-      "intent":  "LineInIntent",
       "slots": [
         {
-            "name": "Room",
-            "type": "ROOMS"
-        },
-        {
-            "name": "LineIn",
-            "type": "ROOMS"
+          "name": "Room",
+          "type": "ROOMS"
         }
-      ]
+      ],
+      "intent": "UngroupIntent"
     }
   ]
 }
